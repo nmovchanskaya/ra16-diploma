@@ -1,14 +1,10 @@
 import { Menu } from './Menu';
 import { SearchHeader } from './SearchHeader';
+import { HeaderContext } from '../shared/contexts/HeaderContext';
+import { useContext } from 'react';
 
-export const Header = (props: {
-    cartQty: any,
-    searchHeaderState: number,
-    searchHeaderForm: any,
-    setSearchHeaderForm: any,
-    clickSearchHeader: any
-}) => {
-    const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader} = props;
+export const Header = () => {
+    const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader} = useContext(HeaderContext);
 
     return (
         <header className="container">

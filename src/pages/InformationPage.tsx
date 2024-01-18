@@ -2,18 +2,10 @@ import { Header } from "../widgets/Header";
 import { Footer } from "../widgets/Footer";
 import { Banner } from "../widgets/Banner";
 
-export const InformationPage = (props: any) => {
-    const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader} = props;
-    
+export const InformationPage = (props: any) => {    
     return (
         <>
-            <Header 
-                cartQty={cartQty} 
-                searchHeaderState={searchHeaderState}
-                searchHeaderForm={searchHeaderForm}
-                setSearchHeaderForm={setSearchHeaderForm}
-                clickSearchHeader={clickSearchHeader}
-            />
+            <Header/>
             <main className="container">
                 <div className="row">
                     <div className="col">

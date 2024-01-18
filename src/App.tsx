@@ -8,10 +8,10 @@ import { AboutContent } from './pages/AboutContent';
 import { ContactsContent } from './pages/ContactsContent';
 import { Page404Content } from './pages/Page404Content';
 import { CartContent } from './pages/CartContent';
-import { Header } from './widgets/Header';
 import { createRequest } from './shared/api/createRequest';
 import { TopSales } from './widgets/TopSales';
 import { CartItem } from './entities/cartItem/model/CartItem';
+import { HeaderContext } from './shared/contexts/HeaderContext';
 
 function App() {
 
@@ -157,6 +157,16 @@ function App() {
 
   const addToCart = (id: number, title: string, size: string, price: number, qty: number) => {
 
+    let added = false;
+    cartItems.forEach((item: CartItem) => {
+      if (item.id === id && item.size === size) {
+        item.qty += qty;
+        added = true;
+      }
+    });
+    
+    if (added) {return;}
+
     const keyString = localStorage.getItem('maxKey');
     let key: any;
 
@@ -173,6 +183,8 @@ function App() {
       console.log(prevItems);
       return prevItems;
     });
+
+    setCartQty(cartItems.length);
     
     //save in localStorage
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -288,118 +300,78 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route path='/' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <TopSales topSales={topSales}/>
-          <CatalogContent 
-            main={true} 
-            activeCategory={activeCategory} 
-            categories={categories} 
-            products={curProducts} 
-            filterProducts={filterProducts} 
-            loadMore={loadMore} 
-            curOffset={curOffset} 
-            searchSubmit={searchSubmit}
-            setSearchForm={setSearchForm}
-            searchForm={searchForm}
-          />
-        </InformationPage>
-      }/>
-      <Route path='/about' element={
-        <InformationPage 
-          cartQty={cartQty} 
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <AboutContent/>
-        </InformationPage>
-      }/>
-      <Route path='/contacts' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <ContactsContent/>
-        </InformationPage>
-      }/>
-      <Route path='/catalog' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <CatalogContent 
-            main={false} 
-            activeCategory={activeCategory} 
-            categories={categories} 
-            products={curProducts} 
-            filterProducts={filterProducts} 
-            loadMore={loadMore} 
-            curOffset={curOffset} 
-            searchSubmit={searchSubmit}
-            setSearchForm={setSearchForm}
-            searchForm={searchForm}
-          />
-        </InformationPage>
-      }/>
-      <Route path='/catalog/:id' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <ProductContent 
-            product={curProduct} 
-            setProduct={setProduct} 
-            addToCart={addToCart}
-          />
-        </InformationPage>
-      }/>
-      <Route path='/cart' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <CartContent 
-            cartItems={cartItems} 
-            setForm={setForm} 
-            form={form} 
-            submitOrder={submitOrder} 
-            deleteItem={deleteItem}/>
-        </InformationPage>
-      }/>
-      <Route path='*' element={
-        <InformationPage 
-          cartQty={cartQty}
-          searchHeaderState={searchHeaderState}
-          searchHeaderForm={searchHeaderForm}
-          setSearchHeaderForm={setSearchHeaderForm}
-          clickSearchHeader={clickSearchHeader}
-        >
-          <Page404Content/>
-        </InformationPage>
-      }/>
-    </Routes>
-  );
+    <HeaderContext.Provider value={{cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader}}>
+      <Routes>
+        <Route path='/' element={
+          <InformationPage>
+            <TopSales topSales={topSales}/>
+            <CatalogContent 
+              main={true} 
+              activeCategory={activeCategory} 
+              categories={categories} 
+              products={curProducts} 
+              filterProducts={filterProducts} 
+              loadMore={loadMore} 
+              curOffset={curOffset} 
+              searchSubmit={searchSubmit}
+              setSearchForm={setSearchForm}
+              searchForm={searchForm}
+            />
+          </InformationPage>
+        }/>
+        <Route path='/about' element={
+          <InformationPage>
+            <AboutContent/>
+          </InformationPage>
+        }/>
+        <Route path='/contacts' element={
+          <InformationPage>
+            <ContactsContent/>
+          </InformationPage>
+        }/>
+        <Route path='/catalog' element={
+          <InformationPage>
+            <CatalogContent 
+              main={false} 
+              activeCategory={activeCategory} 
+              categories={categories} 
+              products={curProducts} 
+              filterProducts={filterProducts} 
+              loadMore={loadMore} 
+              curOffset={curOffset} 
+              searchSubmit={searchSubmit}
+              setSearchForm={setSearchForm}
+              searchForm={searchForm}
+            />
+          </InformationPage>
+        }/>
+        <Route path='/catalog/:id' element={
+          <InformationPage>
+            <ProductContent 
+              product={curProduct} 
+              setProduct={setProduct} 
+              addToCart={addToCart}
+            />
+          </InformationPage>
+        }/>
+        <Route path='/cart' element={
+          <InformationPage>
+            <CartContent 
+              cartItems={cartItems} 
+              setForm={setForm} 
+              form={form} 
+              submitOrder={submitOrder} 
+              deleteItem={deleteItem}/>
+          </InformationPage>
+        }/>
+        <Route path='*' element={
+          <InformationPage>
+            <Page404Content/>
+          </InformationPage>
+        }/>
+      </Routes>
+    </HeaderContext.Provider>
+    );
 }
 
 export default App;
