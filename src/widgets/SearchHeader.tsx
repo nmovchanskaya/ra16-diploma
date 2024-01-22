@@ -6,7 +6,7 @@ export const SearchHeader = (props: {
     searchHeaderForm: {
         text: string;
     },
-    clickSearchHeader: any
+    clickSearchHeader: () => void
 }) => {
 
     const {searchHeaderState, setSearchHeaderForm, searchHeaderForm, clickSearchHeader} = props;

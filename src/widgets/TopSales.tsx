@@ -1,20 +1,18 @@
 import { Product } from "../entities/product/model/Product";
 import { ProductShort } from "../entities/product/ui/ProductShort";
 
-export const TopSales = (props: {topSales: any}) => {
+export const TopSales = (props: {topSales: Product[], preLoaderStatus: boolean}) => {
 
-    const {topSales} = props;
+    const {topSales, preLoaderStatus} = props;
+    let preLoaderHidden = '';
+    if (!(preLoaderStatus)) {
+        preLoaderHidden = ' hidden';
+    }
 
-    if (topSales) {
+    if (topSales.length) {
         return (
             <section className="top-sales">
                 <h2 className="text-center">Хиты продаж!</h2>
-                {/* <div className="preloader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div> */}
                 <div className="row">
                     {topSales.map((item: Product) => {
                         return (
@@ -27,7 +25,12 @@ export const TopSales = (props: {topSales: any}) => {
     }
     else {
         return (
-            <></>
+            <div className="preloader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         )
     }
 }

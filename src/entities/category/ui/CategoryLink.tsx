@@ -1,6 +1,10 @@
 import { Category } from "../model/Category";
 
-export const CategoryLink = (props: {activeCategory: number, category: Category, filterProducts: any}) => {
+export const CategoryLink = (props: {
+    activeCategory: number, 
+    category: Category, 
+    filterProducts: (category: number) => void
+}) => {
     const {activeCategory, category, filterProducts} = props;
     let active = '';
 

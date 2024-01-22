@@ -1,7 +1,7 @@
 import { CartItem } from "../entities/cartItem/model/CartItem";
 
 export const CartContent = (props: {
-        cartItems: any,
+        cartItems: CartItem[],
         setForm: React.Dispatch<React.SetStateAction<{
             phone: string;
             address: string;
@@ -13,7 +13,7 @@ export const CartContent = (props: {
             agreement: boolean;
         },
         submitOrder: React.MouseEventHandler,
-        deleteItem: any
+        deleteItem: (id: number, size: string) => void
     }) => {
     const {cartItems, setForm, form, submitOrder, deleteItem} = props;
     let agreementChecked = '';
@@ -62,7 +62,6 @@ export const CartContent = (props: {
                 })}
                 <tr>
                   <td className="text-right">Общая стоимость</td>
-                  {/* colspan="5" */}
                   <td>
                     {cartItems.reduce((acc: number, item: CartItem) => acc + item.qty * item.price,
                         0,) + ' руб.'} 
@@ -77,7 +76,6 @@ export const CartContent = (props: {
               <form className="card-body" onSubmit={event => event.preventDefault}>
                 <div className="form-group">
                   <label>Телефон</label> 
-                  {/* for="phone" */}
                   <input 
                     className="form-control" 
                     id="phone" 
@@ -89,7 +87,6 @@ export const CartContent = (props: {
                 </div>
                 <div className="form-group">
                   <label>Адрес доставки</label>
-                  {/* for="address" */}
                   <input 
                     className="form-control" 
                     id="address" 
@@ -109,7 +106,6 @@ export const CartContent = (props: {
                     onChange={handlerInputChange} 
                   />
                   <label className="form-check-label">Согласен с правилами доставки</label>
-                  {/* for="agreement" */}
                 </div>
                 <button type="submit" className="btn btn-outline-secondary" onClick={submitOrder}>Оформить</button>
               </form>

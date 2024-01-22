@@ -1,7 +1,11 @@
 import { CategoryLink } from "../entities/category/ui/CategoryLink";
 import { Category } from "../entities/category/model/Category";
 
-export const CategoryMenu = (props: {activeCategory: number, categories: Category[], filterProducts: any}) => {
+export const CategoryMenu = (props: {
+    activeCategory: number, 
+    categories: Category[], 
+    filterProducts: (category: number) => void
+}) => {
 
     const {activeCategory, categories, filterProducts} = props;
     let allActive = '';

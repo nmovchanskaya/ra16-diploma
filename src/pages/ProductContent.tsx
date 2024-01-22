@@ -2,13 +2,18 @@ import { Product } from "../entities/product/model/Product"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createRequest } from "../shared/api/createRequest";
+import { Size } from "../entities/size/model/Size";
 
-export const ProductContent = (props: {product: any, setProduct: any, addToCart: any}) => {
+export const ProductContent = (props: {
+    product: Product, 
+    setProduct: React.Dispatch<any>, 
+    addToCart: (id: number, title: string, size: string, price: number, qty: number) => void
+}) => {
 
     const {product, setProduct, addToCart} = props;
     const params = useParams();
     const url  = 'http://localhost:7070/api/items/';
-    const [selectedSize, setSelectedSize] = useState();
+    const [selectedSize, setSelectedSize] = useState('');
     const [curQty, setCurQty] = useState(1);
     let hidden = '';
     const navigate = useNavigate();
@@ -30,7 +35,7 @@ export const ProductContent = (props: {product: any, setProduct: any, addToCart:
         hidden = ' hidden';
     }
     if (product) {
-        let sizes = product.sizes.filter((item: any) => true);
+        let sizes = product.sizes.filter((item: Size) => item.available === true);
         return (
             <>
                 <section className="catalog-item">
@@ -70,7 +75,7 @@ export const ProductContent = (props: {product: any, setProduct: any, addToCart:
                             </table>
                             <div className="text-center">
                                 <p>Размеры в наличии: 
-                                    {sizes.map((item: any) => {
+                                    {sizes.map((item: Size) => {
                                         let selected = '';
                                         if (item.size === selectedSize) {
                                             selected = ' selected';
@@ -98,7 +103,12 @@ export const ProductContent = (props: {product: any, setProduct: any, addToCart:
     }
     else {
         return (
-            <></>
+            <div className="preloader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         )
     }
 }
