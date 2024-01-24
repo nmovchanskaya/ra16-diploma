@@ -4,7 +4,7 @@ import { HeaderContext } from '../shared/contexts/HeaderContext';
 import { useContext } from 'react';
 
 export const Header = () => {
-    const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader} = useContext(HeaderContext);
+    const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader, websiteUrl} = useContext(HeaderContext);
 
     return (
         <header className="container">
@@ -12,7 +12,7 @@ export const Header = () => {
                 <div className="col">
                     <nav className="navbar navbar-expand-sm navbar-light bg-light">
                         <a className="navbar-brand" href="/">
-                            <img src='img/header-logo.png' alt="Bosa Noga"/>
+                            <img src={websiteUrl + '/img/header-logo.png'} alt="Bosa Noga"/>
                         </a>
                         <div className="collapse navbar-collapse" id="navbarMain">
                             <Menu/>

@@ -20,6 +20,7 @@ export const createRequest = async(options:{
             })
             .catch((error) => {
                 console.error(`Error: ${error}`);
+                alert(error);
             })
     }
     else if (options.sendMethod === 'POST') {
@@ -38,6 +39,7 @@ export const createRequest = async(options:{
             })
             .catch((error) => {
                 console.error(`Error: ${error}`);
+                alert(error);
             })
     }
 }

@@ -16,6 +16,7 @@ import { showMessage } from './features/showMessage';
 
 function App() {
 
+  const websiteUrl = 'http://localhost:3000';
   const categoriesUrl = 'http://localhost:7070/api/categories';
   const getCategories = (callback: any) => {
     createRequest({
@@ -291,7 +292,7 @@ function App() {
   //get all the categories for the first time
   useEffect(() => {
     const resp = getCategories((data: any) => {
-      setCategories(data);
+        setCategories(data);
     })
 
     return () => {}
@@ -322,7 +323,7 @@ function App() {
   }, []);
 
   return (
-    <HeaderContext.Provider value={{cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader}}>
+    <HeaderContext.Provider value={{cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader, websiteUrl}}>
       <Routes>
         <Route path='/' element={
           <InformationPage>

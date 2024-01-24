@@ -6,5 +6,6 @@ export const HeaderContext =
         searchHeaderState: null,
         searchHeaderForm: null,
         setSearchHeaderForm: null,
-        clickSearchHeader: null
+        clickSearchHeader: null,
+        websiteUrl: null
     });
