@@ -1,6 +1,6 @@
 # Build status
 
-[![Build status](https://ci.appveyor.com/api/projects/status/3iaaf00pwcd7c72q?svg=true)](https://ci.appveyor.com/project/nmovchanskaya/ahj-homeworks-events-goblin)
+[![Build status](https://ci.appveyor.com/api/projects/status/pytmhj2rkdqtciuh?svg=true)](https://ci.appveyor.com/project/nmovchanskaya/ra16-diploma)
 
 https://nmovchanskaya.github.io/ra16-diploma/
 
