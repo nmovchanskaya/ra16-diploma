@@ -16,8 +16,19 @@ import { showMessage } from './features/showMessage';
 
 function App() {
 
-  const websiteUrl = 'http://localhost:3000';
-  const categoriesUrl = 'http://localhost:7070/api/categories';
+  let urlServer = '';
+  let websiteUrl;
+
+  if (process.env.NODE_ENV === 'development') {
+    urlServer = 'http://localhost:7070';
+    websiteUrl = 'http://localhost:3000';
+  }
+  else {
+    urlServer = 'https://ra16-diploma-backend.onrender.com';
+    websiteUrl = 'https://nmovchanskaya.github.io';
+  }
+
+  const categoriesUrl = urlServer + '/api/categories';
   const getCategories = (callback: any) => {
     createRequest({
       url: categoriesUrl,
@@ -26,7 +37,7 @@ function App() {
     });
   }
 
-  const topSalesUrl = 'http://localhost:7070/api/top-sales';
+  const topSalesUrl = urlServer + '/api/top-sales';
   const getTopSales = (callback: any) => {
     createRequest({
       url: topSalesUrl,
@@ -43,8 +54,8 @@ function App() {
     });
   }
 
-  const initUrlItems = 'http://localhost:7070/api/items';
-  const urlOrder = 'http://localhost:7070/api/order';
+  const initUrlItems = urlServer + '/api/items';
+  const urlOrder = urlServer + '/api/order';
 
   const [curProducts, setProducts] = useState([]);
   const [urlItems, setUrlItems] = useState(initUrlItems);
@@ -374,6 +385,7 @@ function App() {
               product={curProduct} 
               setProduct={setProduct} 
               addToCart={addToCart}
+              urlServer={urlServer}
             />
           </InformationPage>
         }/>

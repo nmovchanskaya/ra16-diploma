@@ -7,12 +7,13 @@ import { Size } from "../entities/size/model/Size";
 export const ProductContent = (props: {
     product: Product, 
     setProduct: React.Dispatch<any>, 
-    addToCart: (id: number, title: string, size: string, price: number, qty: number) => void
+    addToCart: (id: number, title: string, size: string, price: number, qty: number) => void,
+    urlServer: string
 }) => {
 
-    const {product, setProduct, addToCart} = props;
+    const {product, setProduct, addToCart, urlServer} = props;
     const params = useParams();
-    const url  = 'http://localhost:7070/api/items/';
+    const url  = urlServer + '/api/items/';
     const [selectedSize, setSelectedSize] = useState('');
     const [curQty, setCurQty] = useState(1);
     let hidden = '';
