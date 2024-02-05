@@ -4,7 +4,7 @@ export const Menu = () => {
     return (
         <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-                <NavLink to='/' className={"nav-link"}>Main</NavLink>
+                <NavLink to='/ra16-diploma' className={"nav-link"}>Main</NavLink>
             </li>
             <li className="nav-item">
                 <NavLink to='/catalog' className={"nav-link"}>Catalog</NavLink>
