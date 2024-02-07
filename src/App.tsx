@@ -25,7 +25,7 @@ function App() {
   }
   else {
     urlServer = 'https://ra16-diploma-backend.onrender.com';
-    websiteUrl = 'https://nmovchanskaya.github.io';
+    websiteUrl = 'https://nmovchanskaya.github.io/ra16-diploma';
   }
 
   const categoriesUrl = urlServer + '/api/categories';
@@ -336,7 +336,7 @@ function App() {
   return (
     <HeaderContext.Provider value={{cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader, websiteUrl}}>
       <Routes>
-        <Route path='/' element={
+        <Route path='/ra16-diploma' element={
           <InformationPage>
             <TopSales topSales={topSales} preLoaderStatus={true}/>
             <CatalogContent 
