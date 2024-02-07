@@ -18,7 +18,7 @@ export const CategoryMenu = (props: {
     return (
         <ul className="catalog-categories nav justify-content-center">
             <li className="nav-item">
-                <Link className={"nav-link" + allActive} to="#" onClick={() => filterProducts(0)}>Все</Link>
+                <Link className={"nav-link" + allActive} to="" onClick={() => filterProducts(0)}>Все</Link>
             </li>
             {categories.map((item: Category) => {
                 return (

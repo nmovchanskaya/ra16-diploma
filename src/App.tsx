@@ -336,7 +336,7 @@ function App() {
   return (
     <HeaderContext.Provider value={{cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader, websiteUrl}}>
       <Routes>
-        <Route path='/ra16-diploma' element={
+        <Route path='/' element={
           <InformationPage>
             <TopSales topSales={topSales} preLoaderStatus={true}/>
             <CatalogContent 
