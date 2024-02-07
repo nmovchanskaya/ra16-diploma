@@ -2,7 +2,7 @@ import { Menu } from './Menu';
 import { SearchHeader } from './SearchHeader';
 import { HeaderContext } from '../shared/contexts/HeaderContext';
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const Header = () => {
     const {cartQty, searchHeaderState, searchHeaderForm, setSearchHeaderForm, clickSearchHeader, websiteUrl} = useContext(HeaderContext);
@@ -12,9 +12,9 @@ export const Header = () => {
             <div className="row">
                 <div className="col">
                     <nav className="navbar navbar-expand-sm navbar-light bg-light">
-                        <a className="navbar-brand" href="/">
+                        <Link className="navbar-brand" to='/'>
                             <img src={websiteUrl + '/img/header-logo.png'} alt="Bosa Noga"/>
-                        </a>
+                        </Link>
                         <div className="collapse navbar-collapse" id="navbarMain">
                             <Menu/>
                             <div>
