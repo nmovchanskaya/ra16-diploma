@@ -1,4 +1,5 @@
 import { Product } from "../model/Product"
+import { NavLink } from "react-router-dom";
 
 export const ProductShort = (props: {product: Product}) => {
     const {product} = props;
@@ -10,7 +11,7 @@ export const ProductShort = (props: {product: Product}) => {
                 <div className="card-body">
                     <p className="card-text">{product.title}</p>
                     <p className="card-text">{product.price}</p>
-                    <a href={"/catalog/" + product.id} className="btn btn-outline-primary">Заказать</a>
+                    <NavLink to={"/catalog/" + product.id} className="btn btn-outline-primary">Заказать</NavLink>
                 </div>
             </div>
         </div>
