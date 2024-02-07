@@ -1,4 +1,5 @@
 import { Category } from "../model/Category";
+import { Link } from "react-router-dom";
 
 export const CategoryLink = (props: {
     activeCategory: number, 
@@ -14,7 +15,7 @@ export const CategoryLink = (props: {
 
     return (
         <li className="nav-item">
-            <a className={"nav-link" + active} href="#" onClick={() => filterProducts(category.id)}>{category.title}</a>
+            <Link className={"nav-link" + active} to="#" onClick={() => filterProducts(category.id)}>{category.title}</Link>
         </li>
     )
 }

@@ -1,5 +1,6 @@
 import { CategoryLink } from "../entities/category/ui/CategoryLink";
 import { Category } from "../entities/category/model/Category";
+import { Link } from "react-router-dom";
 
 export const CategoryMenu = (props: {
     activeCategory: number, 
@@ -17,7 +18,7 @@ export const CategoryMenu = (props: {
     return (
         <ul className="catalog-categories nav justify-content-center">
             <li className="nav-item">
-                <a className={"nav-link" + allActive} href="#" onClick={() => filterProducts(0)}>Все</a>
+                <Link className={"nav-link" + allActive} to="#" onClick={() => filterProducts(0)}>Все</Link>
             </li>
             {categories.map((item: Category) => {
                 return (
