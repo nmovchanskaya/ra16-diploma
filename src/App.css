@@ -323,3 +323,7 @@ h2, .h2 {
 .preloader {
   margin: 20px auto;
 }
+
+.catalog-item-size {
+  margin-left: 10px;
+}

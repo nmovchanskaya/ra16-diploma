@@ -7,8 +7,8 @@ export const Banner = () => {
 
     return (
         <div className="banner">
-            <img src={websiteUrl + "/img/banner.jpg"} className="img-fluid" alt="К весне готовы!"/>
-            <h2 className="banner-header">К весне готовы!</h2>
+            <img src={websiteUrl + "/img/banner.jpg"} className="img-fluid" alt="Ready for spring!"/>
+            <h2 className="banner-header">Ready for spring!</h2>
         </div>
     )
 }

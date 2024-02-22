@@ -34,7 +34,7 @@ export const CatalogContent = (props: {
         return (
             <>
                 <section className="catalog">
-                    <h2 className="text-center">Каталог</h2>
+                    <h2 className="text-center">Catalog</h2>
                     <Search searchHidden={searchHidden} searchSubmit={searchSubmit} setSearchForm={setSearchForm} searchForm={searchForm}/>
     
                     <CategoryMenu activeCategory={activeCategory} categories={categories} filterProducts={filterProducts}/>
@@ -47,7 +47,7 @@ export const CatalogContent = (props: {
                         })}
                     </div>
                     <div className="text-center">
-                        <button className={"btn btn-outline-primary" + loadHidden} onClick={() => loadMore(6 * curOffset)}>Загрузить ещё</button>
+                        <button className={"btn btn-outline-primary" + loadHidden} onClick={() => loadMore(6 * curOffset)}>Load more</button>
                     </div>
                 </section>
             </>

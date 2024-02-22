@@ -49,33 +49,33 @@ export const ProductContent = (props: {
                             <table className="table table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td>Артикул</td>
+                                        <td>SKU</td>
                                         <td>{product.sku}</td>
                                     </tr>
                                     <tr>
-                                        <td>Производитель</td>
+                                        <td>Brand</td>
                                         <td>{product.manufacturer}</td>
                                     </tr>
                                     <tr>
-                                        <td>Цвет</td>
+                                        <td>Color</td>
                                         <td>{product.color}</td>
                                     </tr>
                                     <tr>
-                                        <td>Материалы</td>
+                                        <td>Material</td>
                                         <td>{product.material}</td>
                                     </tr>
                                     <tr>
-                                        <td>Сезон</td>
+                                        <td>Season</td>
                                         <td>{product.season}</td>
                                     </tr>
                                     <tr>
-                                        <td>Повод</td>
+                                        <td>Type</td>
                                         <td>{product.reason}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div className="text-center">
-                                <p>Размеры в наличии: 
+                                <p>Sizes in stock: 
                                     {sizes.map((item: Size) => {
                                         let selected = '';
                                         if (item.size === selectedSize) {
@@ -86,7 +86,7 @@ export const ProductContent = (props: {
                                         )
                                     })}
                                 </p>
-                                <p>Количество: <span className="btn-group btn-group-sm pl-2">
+                                <p>Qty: <span className="btn-group btn-group-sm pl-2">
                                         <button className="btn btn-secondary" onClick={() => setCurQty(curQty-1)}>-</button>
                                         <span className="btn btn-outline-primary">{curQty}</span>
                                         <button className="btn btn-secondary" onClick={() => setCurQty(curQty+1)}>+</button>
@@ -95,7 +95,7 @@ export const ProductContent = (props: {
                             </div>
                             <button className={"btn btn-danger btn-block btn-lg" + hidden} onClick={() => {
                                 addToCart(product.id, product.title, selectedSize, product.price, curQty);
-                            }}>В корзину</button>
+                            }}>Add to card</button>
                         </div>
                     </div>
                 </section>

@@ -12,7 +12,7 @@ export const TopSales = (props: {topSales: Product[], preLoaderStatus: boolean})
     if (topSales.length) {
         return (
             <section className="top-sales">
-                <h2 className="text-center">Хиты продаж!</h2>
+                <h2 className="text-center">Top sales</h2>
                 <div className="row">
                     {topSales.map((item: Product) => {
                         return (

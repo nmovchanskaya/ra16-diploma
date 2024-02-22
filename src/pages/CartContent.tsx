@@ -31,17 +31,17 @@ export const CartContent = (props: {
     return (
         <>
           <section className="cart">
-            <h2 className="text-center">Корзина</h2>
+            <h2 className="text-center">Cart</h2>
             <table className="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Название</th>
-                  <th scope="col">Размер</th>
-                  <th scope="col">Кол-во</th>
-                  <th scope="col">Стоимость</th>
-                  <th scope="col">Итого</th>
-                  <th scope="col">Действия</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Size</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -56,41 +56,41 @@ export const CartContent = (props: {
                             <td>{item.qty}</td>
                             <td>{item.price}</td>
                             <td>{item.qty * item.price}</td>
-                            <td><button className="btn btn-outline-danger btn-sm" onClick={() => deleteItem(item.id, item.size)}>Удалить</button></td>
+                            <td><button className="btn btn-outline-danger btn-sm" onClick={() => deleteItem(item.id, item.size)}>Delete</button></td>
                         </tr>
                     )
                 })}
                 <tr>
-                  <td className="text-right">Общая стоимость</td>
+                  <td className="text-right">Total</td>
                   <td>
                     {cartItems.reduce((acc: number, item: CartItem) => acc + item.qty * item.price,
-                        0,) + ' руб.'} 
+                        0,) + '$'} 
                   </td>
                 </tr>
               </tbody>
             </table>
           </section>
           <section className="order">
-            <h2 className="text-center">Оформить заказ</h2>
+            <h2 className="text-center">Submit</h2>
             <div className="card">
               <form className="card-body" onSubmit={event => event.preventDefault}>
                 <div className="form-group">
-                  <label>Телефон</label> 
+                  <label>Phone number</label> 
                   <input 
                     className="form-control" 
                     id="phone" 
-                    placeholder="Ваш телефон"
+                    placeholder="Phone number"
                     name="phone"
                     value={form.phone}
                     onChange={handlerInputChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label>Адрес доставки</label>
+                  <label>Delivery address</label>
                   <input 
                     className="form-control" 
                     id="address" 
-                    placeholder="Адрес доставки"
+                    placeholder="Delivery address"
                     name="address"
                     value={form.address}
                     onChange={handlerInputChange}
@@ -105,9 +105,9 @@ export const CartContent = (props: {
                     checked={form.agreement}
                     onChange={handlerInputChange} 
                   />
-                  <label className="form-check-label">Согласен с правилами доставки</label>
+                  <label className="form-check-label">Agree with the delivery rules.</label>
                 </div>
-                <button type="submit" className="btn btn-outline-secondary" onClick={submitOrder}>Оформить</button>
+                <button type="submit" className="btn btn-outline-secondary" onClick={submitOrder}>Submit</button>
               </form>
             </div>
           </section>

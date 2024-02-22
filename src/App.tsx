@@ -24,7 +24,7 @@ function App() {
     websiteUrl = 'http://localhost:3000';
   }
   else {
-    urlServer = 'https://ra16-diploma-backend.onrender.com';
+    urlServer = 'https://ra16-diploma-backend-4zxp.onrender.com';
     websiteUrl = 'https://nmovchanskaya.github.io/ra16-diploma';
   }
 

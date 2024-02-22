@@ -11,7 +11,7 @@ export const ProductShort = (props: {product: Product}) => {
                 <div className="card-body">
                     <p className="card-text">{product.title}</p>
                     <p className="card-text">{product.price}</p>
-                    <NavLink to={"/catalog/" + product.id} className="btn btn-outline-primary">Заказать</NavLink>
+                    <NavLink to={"/catalog/" + product.id} className="btn btn-outline-primary">Order</NavLink>
                 </div>
             </div>
         </div>
