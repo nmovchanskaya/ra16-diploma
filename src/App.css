@@ -315,6 +315,8 @@ h2, .h2 {
 }
 .card-body {
   flex-grow: 0;
+  display: flex;
+  justify-content: space-between;
 }
 .col-4 {
   margin-bottom: 20px;
